@@ -101,8 +101,13 @@ def main(stdscr):
     curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)
 
     start_screen(stdscr)
-    wpm_test(stdscr)
-    stdscr.getkey()
+    while True:
+        wpm_test(stdscr)
+        key = stdscr.getkey()
+        if ord(key) == 32:
+            continue
+        elif ord(key) == 27:
+            break
 
 #call main function while initializing the screen
 wrapper(main)
